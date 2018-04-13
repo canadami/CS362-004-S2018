@@ -1,1 +1,1 @@
-My name is Michael Canaday, canadami
+This is my assignment-2 submission!
