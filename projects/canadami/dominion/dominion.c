@@ -644,6 +644,9 @@ int getCost(int cardNumber)
 }
 
 
+/****************************************************************
+ * Functions Refactored from cardEffect
+******************************************************************/
 int adventurer_function(struct gameState *state)
 {
 	int temphand[MAX_HAND];
@@ -675,9 +678,6 @@ int adventurer_function(struct gameState *state)
 }
 
 
-/****************************************************************
- * Functions Refactored from cardEffect
-******************************************************************/
 int smithy_function(struct gameState *state, int handPos)
 {
 	int currentPlayer = whoseTurn(state);
