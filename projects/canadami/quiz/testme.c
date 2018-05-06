@@ -5,14 +5,48 @@
 
 char inputChar()
 {
-    // TODO: rewrite this function
-    return ' ';
+	char z = ' ';
+	//all ASCII values c could be
+	int a [9] = {
+			91,   // '['
+			40,   // '('
+			123,  // '{'
+			32,   // ' '
+			97,   // 'a'
+			120,  // 'x'
+			125,  // '}'
+			41,   // ')'
+			93    // ']'
+	};	
+
+	//get random value between 0 and 8
+	int x = rand() % 9;
+	z = a[x];	
+	
+    return z;
 }
 
 char *inputString()
 {
-    // TODO: rewrite this function
-    return "";
+	//create string to return
+	char *s = malloc(sizeof(char) * 6);
+
+	//terminate string with NULL
+	s[5] = '\0';
+
+	//all possible letters of s
+	char a [5] = "erst";
+
+	int i, x;
+	//create random string from possible letters in s
+	for(i = 0; i < 5; i++)
+	{
+		x = rand() % 5;
+		s[i] = a[x];
+	}
+	
+	
+    return s;
 }
 
 void testme()
@@ -42,9 +76,11 @@ void testme()
        && s[4] == 't' && s[5] == '\0'
        && state == 9)
     {
-      printf("error ");
+      printf("error\n");
+	  free(s);				//free dynamically allocated s before exit
       exit(200);
     }
+	free(s);				//free dynamically allocatd s for each iteration
   }
 }
 
