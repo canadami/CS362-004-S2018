@@ -40,7 +40,7 @@ char *inputString()
 	int i, x;
 	//create random string from possible letters in s
 	for(i = 0; i < 5; i++){
-		x = rand() % 5;
+		x = rand() % 4;
 		s[i] = a[x];
 	}
 	
