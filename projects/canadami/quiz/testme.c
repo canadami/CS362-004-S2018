@@ -39,12 +39,10 @@ char *inputString()
 
 	int i, x;
 	//create random string from possible letters in s
-	for(i = 0; i < 5; i++)
-	{
+	for(i = 0; i < 5; i++){
 		x = rand() % 5;
 		s[i] = a[x];
 	}
-	
 	
     return s;
 }
