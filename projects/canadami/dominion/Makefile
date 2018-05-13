@@ -35,5 +35,55 @@ player: player.c interface.o
 
 all: playdom player 
 
-clean:
-	rm -f *.o playdom.exe playdom player player.exe  *.gcov *.gcda *.gcno *.so *.out testDrawCard testDrawCard.exe
+clean: removeunittestresults.out
+	rm -f *.o playdom.exe playdom player player.exe  *.gcov *.gcda *.gcno *.so *.out testDrawCard testDrawCard.exe 
+
+
+removeunittestresults.out: 
+	rm -f unittest1 unittest2 unittest3 unittest4 cardtest1 cardtest2 cardtest3 cardtest4
+
+unit1: unittest1.c dominion.o rngs.o
+	gcc -o unittest1 -g unittest1.c dominion.o rngs.o $(CFLAGS)
+
+unit2: unittest2.c dominion.o rngs.o
+	gcc -o unittest2 -g unittest2.c dominion.o rngs.o $(CFLAGS)
+
+unit3: unittest3.c dominion.o rngs.o
+	gcc -o unittest3 -g unittest3.c dominion.o rngs.o $(CFLAGS)
+
+unit4: unittest4.c dominion.o rngs.o
+	gcc -o unittest4 -g unittest4.c dominion.o rngs.o $(CFLAGS)
+
+card1: cardtest1.c dominion.o rngs.o
+	gcc -o cardtest1 -g cardtest1.c dominion.o rngs.o $(CFLAGS)
+
+card2: cardtest2.c dominion.o rngs.o
+	gcc -o cardtest2 -g cardtest2.c dominion.o rngs.o $(CFLAGS)
+
+card3: cardtest3.c dominion.o rngs.o
+	gcc -o cardtest3 -g cardtest3.c dominion.o rngs.o $(CFLAGS)
+
+card4: cardtest4.c dominion.o rngs.o
+	gcc -o cardtest4 -g cardtest4.c dominion.o rngs.o $(CFLAGS)
+
+
+unittestresults.out: unit1 unit2 unit3 unit4 card1 card2 card3 card4 
+	./unittest1 &> unittestresults.out
+	./unittest2 >> unittestresults.out
+	./unittest3 >> unittestresults.out
+	./unittest4 >> unittestresults.out
+	./cardtest1 >> unittestresults.out
+	./cardtest2 >> unittestresults.out
+	./cardtest3 >> unittestresults.out
+	./cardtest4 >> unittestresults.out
+	gcov dominion.c -b >> unittestresults.out
+	cat dominion.c.gcov >> unittestresults.out
+	gcov unittest1.c -b >> unittestresults.out	
+	gcov unittest2.c -b >> unittestresults.out	
+	gcov unittest3.c -b >> unittestresults.out	
+	gcov unittest4.c -b >> unittestresults.out	
+	gcov cardtest1.c -b >> unittestresults.out
+	gcov cardtest2.c -b >> unittestresults.out	
+	gcov cardtest3.c -b >> unittestresults.out	
+	gcov cardtest4.c -b >> unittestresults.out	
+
