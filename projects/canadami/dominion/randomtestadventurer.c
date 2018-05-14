@@ -1,7 +1,8 @@
 /*****************************************************************
  * Author: Michael Canaday
  * Date: 5/13/18
- * Description:
+ * Description: This is a random tester for the adventurer 
+ *				function.
 *****************************************************************/
 
 #include "dominion.h"
